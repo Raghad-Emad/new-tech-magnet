@@ -1,0 +1,57 @@
+.flash_card {
+  position: relative;
+  width: 50%;
+  /* height: 40%; */
+  /* width: 150vh;
+  height: 60vh; */
+  /* width: 20rem; */
+  height: 20rem;
+  margin: 1rem;
+  padding: 0;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+.flash_card p {
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: black;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.flash_card.flipped {
+}
+.flash_card.flipped .front {
+  transform: rotateY(180deg);
+}
+.flash_card.flipped .back {
+  transform: rotateY(0deg);
+}
+.flash_card .front,
+.flash_card .back {
+  background-color: yellow;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: absolute;
+  text-align: center;
+  box-shadow: 0.75rem 0.75rem 0.5rem rgba(0, 0, 0, 0.4);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  /* transition: z-index 0.5s step-start; */
+  transition: transform ease 500ms;
+}
+.flash_card .front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+.flash_card .back {
+  transform: rotateY(-180deg);
+}

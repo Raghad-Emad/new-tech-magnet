@@ -1,0 +1,54 @@
+.color_container {
+  background-color: var(--background-color);
+  padding: 0.5rem;
+  width: 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+  cursor: pointer;
+}
+.primary_color {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+
+  box-shadow: inset var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.secondary_color {
+  position: relative;
+  width: 70%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: inset var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.text_color {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.hidden {
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  color: white;
+  display: none;
+}
+.color_container:hover .hidden {
+  display: block;
+}

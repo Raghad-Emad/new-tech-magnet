@@ -1,0 +1,17 @@
+.container {
+  display: grid;
+  grid-template-columns: 30% 18% 15% 20% 15%;
+  width: 95%;
+  padding: 0.25rem 0.5rem;
+  margin: auto;
+  align-items: center;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+  transition: all 300ms;
+  cursor: pointer;
+}
+.container:hover {
+  box-shadow: none;
+}

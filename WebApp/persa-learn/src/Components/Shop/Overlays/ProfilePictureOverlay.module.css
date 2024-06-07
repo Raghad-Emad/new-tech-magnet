@@ -1,0 +1,48 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+.overlay .message_box {
+  background-color: var(--background-color);
+  padding: 1rem 4%;
+  width: max(25%, 20rem);
+  min-width: fit-content;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.overlay .message_box .image {
+  width: 80%;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  box-shadow: inset var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.overlay .message_box p {
+  margin: 0.25rem;
+}
+@media (max-width: 35em) {
+  .overlay .message_box {
+    width: 80%;
+  }
+}
+@media (max-width: 50em) and (min-width: 35rem) {
+  .overlay .message_box {
+    width: 50%;
+  }
+}

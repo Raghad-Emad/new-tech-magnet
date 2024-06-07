@@ -1,0 +1,29 @@
+version: "3.4"
+
+services:
+  web-app:
+    build:
+      context: ./WebApp/persa-learn
+      dockerfile: Dockerfile.dev
+    # ./WebApp/persa-learn
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./WebApp/persa-learn/src:/app/src
+    environment:
+      - NODE_ENV=development
+
+    # dockerfile: ./WebApp/persa-learn/Dockerfile
+  api:
+    build:
+      args:
+        NODE_ENV: development
+      context: ./node js RESTful API
+      dockerfile: Dockerfile.dev
+
+    volumes:
+      - ./node js RESTful API/:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run dev

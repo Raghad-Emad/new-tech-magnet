@@ -1,0 +1,105 @@
+.primary {
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  color: var(--btn-text-color);
+  min-width: 12rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  /* font-size: 1.5rem; */
+  font-size: 1rem;
+  transition: all 200ms;
+  cursor: pointer;
+}
+.primary:hover {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  transform: scale(1.05);
+}
+.primary[aria-disabled="true"] {
+  opacity: 0.5;
+}
+.primary[aria-disabled="true"]:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  transform: scale(1);
+}
+
+.secondary {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  min-width: 12rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 200ms;
+}
+.secondary:hover {
+  /* scale: 1.05; */
+  transform: scale(1.05);
+}
+.secondary[aria-disabled="true"] {
+  opacity: 0.5;
+}
+.secondary[aria-disabled="true"]:hover {
+  transform: scale(1);
+}
+
+.icon {
+  background-color: var(--background-color);
+  font-size: 2rem;
+  padding: 0;
+  border-radius: var(--border-radius);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  cursor: pointer;
+}
+.icon:hover {
+  /* scale: 1.1; */
+  transform: scale(1.1);
+}
+
+.special {
+  background-color: var(--background-color);
+  margin: 1rem;
+  width: fit-content;
+  min-width: 12rem;
+  padding: 0 1rem 0 0;
+  border-radius: 2rem;
+  display: grid;
+  grid-template-columns: auto 75%;
+  gap: 1rem;
+  align-items: center;
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+  cursor: pointer;
+  transition: all 300ms;
+}
+.special:hover {
+  box-shadow: none;
+}
+.circle {
+  display: flex;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  height: 100%;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.special p {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  font-size: 1.5rem;
+}

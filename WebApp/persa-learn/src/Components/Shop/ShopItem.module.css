@@ -1,0 +1,90 @@
+.item {
+  position: relative;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  text-align: center;
+  width: 10rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+  transition: all 300ms;
+  cursor: pointer;
+}
+.item:hover {
+  box-shadow: none;
+}
+.item .image {
+  background-color: var(--items-container);
+  position: relative;
+  /* height: 10rem; */
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: inset var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+
+  /* justify-content: center; */
+}
+
+.item .image .outer_color {
+  position: absolute;
+  display: flex;
+  border-radius: 50%;
+  width: 80%;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.item .image .inner_color {
+  position: absolute;
+  border-radius: 50%;
+  width: 60%;
+  aspect-ratio: 1;
+  box-shadow: inset var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+
+.item .image p {
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+  z-index: 10;
+  opacity: 0;
+  border-radius: var(--border-radius);
+  transition: all 500ms ease-in;
+}
+.item:hover .image p {
+  opacity: 1;
+}
+.purchased {
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  color: black;
+}
+@media (max-width: 35em) {
+  .item {
+    /* width: min(10rem, 45%); */
+    width: min(8rem, 30%);
+  }
+  .item p {
+    font-size: 1rem;
+  }
+  .item .image p {
+    font-size: 1rem;
+    padding: 0.2rem;
+  }
+}

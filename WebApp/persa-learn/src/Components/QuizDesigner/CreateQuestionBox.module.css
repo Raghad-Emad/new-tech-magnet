@@ -1,0 +1,107 @@
+.create_question {
+  /* border: solid 1px pink; */
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  /* border: solid 1px green; */
+  font-size: 1.5rem;
+  width: 100%;
+  /* background-color: var(--card-bg); */
+
+  border-radius: var(--border-radius) !important;
+  /* box-shadow: var(--box-shadow); */
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+
+/* .create_question form {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px green;
+  font-size: 1.5rem;
+  width: 100%;
+} */
+/* .create_question input {
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  padding: 0.25rem;
+} */
+
+.create_question .question_box {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem 1rem;
+  border-bottom: grey solid 1px;
+  width: 100%;
+  padding-top: 1.5rem;
+  border-radius: var(--border-radius);
+}
+.create_question .question_box input {
+  /* width: 40%; */
+  /* border-radius: 2rem; */
+  /* font-size: 1.5rem; */
+  margin: 0.75rem 2rem;
+  /* padding: 0.5rem; */
+}
+.create_question .question_box input:first-child {
+  font-size: 1.2rem;
+}
+.create_question .correct_ans {
+  display: grid;
+  grid-template-columns: 25% 10%;
+  width: 100%;
+}
+.create_question .correct_ans p {
+  margin: 1rem auto;
+}
+.create_question .options_box {
+  width: 100%;
+}
+
+.create_question .btn {
+  width: 25%;
+  margin: 0.5rem 2rem;
+}
+/* .create_question form input {
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  padding: 0.25rem;
+}
+
+.create_question form .question_box {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem 1rem;
+  border-bottom: grey solid 1px;
+  width: 100%;
+  padding-top: 1.5rem;
+}
+.create_question form .question_box input {
+  width: 40%;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  margin: 0.75rem 2rem;
+  padding: 0.5rem;
+}
+.create_question form .question_box input:first-child {
+  color: red;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.create_question form .correct_ans {
+  display: grid;
+  grid-template-columns: 25% 10%;
+  width: 100%;
+}
+.create_question form .correct_ans p {
+  margin: 1rem auto;
+}
+.create_question form .options_box {
+  width: 100%;
+}
+
+.create_question form .btn {
+  width: 25%;
+  margin: 0.5rem 2rem;
+} */

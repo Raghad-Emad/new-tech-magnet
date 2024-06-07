@@ -1,0 +1,56 @@
+.picture_container {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: MIN(45rem, 90%);
+  /* max-width: 90% !important; */
+  border: 2px solid var(--background-color);
+  /* padding: 1rem; */
+  padding: MIN(1rem, 1%);
+  /* padding: 1%; */
+  /* padding: min(1rem, 1%); */
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 40rem; */
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 4/1;
+  border-radius: var(--border-radius);
+  /* border-radius: 100rem; */
+  /* --box-shadow-offset-xin */
+  box-shadow: inset var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.image p {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  /* display: none; */
+  transition: all 200ms;
+  opacity: 0;
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.picture_container:hover .image p {
+  opacity: 1;
+}
+
+@media (max-width: 35em) {
+  /* .image {
+    width: 20rem;
+  } */
+  .image {
+    /* width: 100%; */
+    /* max-width: 100%; */
+  }
+}

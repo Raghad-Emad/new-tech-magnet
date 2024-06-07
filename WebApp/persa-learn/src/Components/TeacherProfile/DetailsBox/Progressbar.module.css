@@ -1,0 +1,45 @@
+.progressbar {
+  width: 100%;
+  display: flex;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+
+  overflow: hidden;
+}
+.text {
+  margin: 0;
+  color: white;
+}
+
+.bar_fill_left {
+  background-color: green;
+  width: 50%;
+  text-align: center;
+  padding: 0.2rem 0;
+}
+.bar_fill_right {
+  background-color: red;
+  /* width: 50%; */
+  text-align: center;
+  padding: 0.2rem 0;
+}
+
+.key {
+  display: flex;
+  justify-content: end;
+  gap: 2rem;
+}
+.key .item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+.key .item .color {
+  width: 1rem;
+  height: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}

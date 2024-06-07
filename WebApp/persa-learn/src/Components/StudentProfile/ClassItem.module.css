@@ -1,0 +1,28 @@
+.class_item {
+  display: grid;
+  grid-template-columns: 15% 20% 10% 55%;
+  width: 95%;
+  background-color: var(--background-color);
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+  transition: all 300ms;
+}
+.class_item:hover {
+  box-shadow: none;
+}
+.class_item p {
+  margin: 1rem;
+}
+
+@media (max-width: 35em) {
+  .class_item {
+    grid-template-columns: 33% 33% 33%;
+  }
+}
+@media (max-width: 80em) {
+  .class_item {
+    grid-template-columns: 33% 33% 33%;
+  }
+}

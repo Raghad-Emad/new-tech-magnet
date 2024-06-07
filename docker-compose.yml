@@ -1,0 +1,63 @@
+version: "3.4"
+
+services:
+  api:
+    # build:
+    #   context: ./node js RESTful API
+    #   dockerfile: Dockerfile.dev
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "db"
+    env_file:
+      - database.env
+      - ./node js RESTful API/.env
+    environment:
+      - BACKEND_SERVER="here we need to enter backend server"
+    volumes:
+      - ./node js RESTful API/:/app
+      - /app/node_modules
+    restart: always
+    # volumes:
+    #   - ./node js RESTful API:/app
+    # volumes:
+    #   - ./node js RESTful API:/app/src
+
+  web-app:
+    # build:
+    #   context: ./WebApp/persa-learn
+    #   dockerfile: Dockerfile.dev
+    # # ./WebApp/persa-learn
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "api"
+    # volumes:
+    # - ./WebApp/persa-learn/src:/app/src
+
+  # dockerfile: ./WebApp/persa-learn/Dockerfile
+  db:
+    image: mariadb:10.5.8
+    # image: mysql:latest
+    ports:
+      - "3306:3306"
+    env_file:
+      - database-root.env
+      - database.env
+    volumes:
+      - db_vol:/var/lib/mysql
+      - ./mysql/sql/:/docker-entrypoint-initdb.d
+    restart: always
+    command: "--wait_timeout=28800"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "8082:80"
+    env_file:
+      - database-root.env
+      - database.env
+    depends_on:
+      - "db"
+
+volumes:
+  db_vol:

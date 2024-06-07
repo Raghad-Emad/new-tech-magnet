@@ -1,0 +1,22 @@
+.container {
+  background-color: var(--background-color);
+
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.container .top {
+  padding: 0.5rem 1rem;
+}
+.progressbar {
+  width: 100%;
+  background-color: var(--background-color);
+  height: 1rem;
+  align-items: flex-start;
+}
+.barFill {
+  height: 1rem;
+  background-color: var(--primary-color);
+  width: 50%;
+  border-radius: 2rem;
+}

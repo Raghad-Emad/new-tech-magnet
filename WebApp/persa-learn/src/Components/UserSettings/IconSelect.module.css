@@ -1,0 +1,50 @@
+.picture_container {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 7rem;
+  height: 7rem;
+  max-width: 90%;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  border: 2px solid var(--background-color);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  aspect-ratio: 1;
+  /* border-radius: var(--border-radius); */
+  border-radius: 100rem;
+  /* --box-shadow-offset-xin */
+  box-shadow: inset var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.image p {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  /* display: none; */
+  transition: all 200ms;
+  opacity: 0;
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.picture_container:hover .image p {
+  opacity: 1;
+}
+
+@media (max-width: 35em) {
+  .picture_container {
+    /* gap: min(2rem, 5%), min(2rem, 1%); */
+    width: 5rem;
+    height: 5rem;
+  }
+}

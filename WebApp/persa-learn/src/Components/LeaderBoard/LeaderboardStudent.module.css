@@ -1,0 +1,51 @@
+.leaderboard_student {
+  display: grid;
+  grid-template-columns: 2% MAX(3rem, 8%) 50% 10% 10%;
+  /* gap: clamp(1rem, 5vh, 2rem); */
+  gap: 1rem;
+  background-color: var(--background-color);
+
+  padding: 1rem 1rem;
+  align-items: center;
+  /* margin: 01rem; */
+  width: 95%;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+  transition: all 300ms;
+}
+.leaderboard_student:hover {
+  box-shadow: none;
+}
+.image {
+  width: 100%;
+  aspect-ratio: 1;
+}
+/* .leaderboard_student img {
+  width: 5rem;
+  height: 5rem;
+} */
+/* .leaderboard_student img:last-child {
+  margin-bottom: 2rem;
+} */
+.leaderboard_student p {
+  font-size: 1.2rem;
+}
+/* 
+@media (max-width: 50em) {
+  .leaderboard_student {
+    grid-template-columns: 2% 15% 50% 10%;
+  }
+}
+@media (max-width: 35em) {
+  .leaderboard_student {
+    grid-template-columns: 2% 20% 50% 10%;
+  }
+} */
+@media (max-width: 50em) {
+  .leaderboard_student {
+    grid-template-columns: 2% MAX(3rem, 10%) 30% 10% 10%;
+    gap: 0.5rem;
+    padding: 0.5rem 0.5rem;
+  }
+}

@@ -1,0 +1,22 @@
+.assignment_item {
+  display: grid;
+  grid-template-columns: 30% 15% 20% 15% 20%;
+  width: 95%;
+  background-color: var(--background-color);
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+  transition: all 300ms;
+}
+.assignment_item:hover {
+  box-shadow: none;
+}
+.assignment_item p {
+  margin: 1rem;
+}
+@media (max-width: 35em) {
+  .assignment_item {
+    grid-template-columns: 33% 33% 33%;
+  }
+}

@@ -1,0 +1,53 @@
+.banner {
+  position: relative;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  width: 100%;
+  padding: 0;
+  background-image: url('../../assets/profilebg.jpg ');
+  background-color: #6EE5E3;
+  /* background: linear-gradient(90deg, rgba(110,229,227,1) 0%, rgba(255,255,255,1) 100%); */
+  border-radius: var(--border-radius);
+  align-items: center;
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.top {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: auto;
+  padding: 1vw;
+}
+.settings_btn {
+  width: auto;
+  height: auto;
+  color: var(--nav-text-color);
+  font-size: 3rem;
+  transition: all 500ms;
+}
+.settings_btn a {
+  text-decoration: none;
+  color: var(--nav-text-color);
+}
+.settings_btn:hover {
+  cursor: pointer;
+  transform: rotate(22.5deg);
+}
+.upper {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  position: relative;
+  width: 100%;
+  align-items: flex-end;
+}
+@media (max-width: 35em) {
+  .upper {
+    align-items: flex-end;
+    height: 50%;
+  }
+}

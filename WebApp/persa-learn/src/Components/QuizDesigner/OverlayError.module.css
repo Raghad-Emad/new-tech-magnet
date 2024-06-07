@@ -1,0 +1,33 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.overlay[aria-disabled="true"] {
+  display: none;
+}
+
+.overlay .message_box {
+  background-color: var(--background-color);
+  padding: 2% 10%;
+  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: var(--border-radius);
+}
+.overlay .message_box input {
+  width: 80%;
+  margin: 0 10%;
+  border-radius: 2rem;
+  font-size: 2rem;
+  padding: 0.5rem;
+  box-shadow: 0 0.5rem 0.5rem -0.25em black inset;
+}

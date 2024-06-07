@@ -1,0 +1,28 @@
+.container {
+  background-color: var(--background-color);
+  /* width: 45%; */
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color); */
+  /* --box-shadow-offset-x: 0;
+  --box-shadow-offset-y: 0.125rem;
+  --box-shadow-blur: 0.5rem;
+  --box-shadow-spread: -0.25rem;
+  --box-shadow-color: black; */
+}
+.error {
+  color: red;
+}
+.heading {
+  font-size: 2rem;
+  font-weight: bold;
+  /* color: black; */
+}
+.subheading {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

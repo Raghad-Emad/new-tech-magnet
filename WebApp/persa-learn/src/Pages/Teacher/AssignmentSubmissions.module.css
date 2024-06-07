@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2rem 0;
+  align-items: center;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.submissions_container {
+  display: grid;
+  gap: 0.5rem;
+  /* margin-bottom: clamp(2rem); */
+  position: relative;
+  width: 95%;
+  padding: 0.5rem 0;
+  background-color: var(--items-container);
+  border-radius: var(--border-radius);
+  box-shadow: inset var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.col_names {
+  display: grid;
+  grid-template-columns: 30% 18% 15% 20% 15%;
+  align-items: center;
+  margin: auto;
+  width: 95%;
+  padding: 0.5rem;
+  background-color: var(--selected-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}

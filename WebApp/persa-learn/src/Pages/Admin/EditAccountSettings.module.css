@@ -1,0 +1,17 @@
+.container {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+}
+.success_message {
+  color: green;
+  background-color: var(--items-container);
+  font-size: 1.8rem;
+}
+.title {
+  font-size: 1.5rem;
+}

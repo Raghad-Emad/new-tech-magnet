@@ -1,0 +1,10 @@
+.star_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: gray;
+}
+.star_container > svg {
+  cursor: pointer;
+}

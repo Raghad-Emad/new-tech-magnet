@@ -1,0 +1,44 @@
+.new_option {
+  /* border: 1px solid #4ffedf;
+  background-color: blue; */
+  width: auto;
+  margin: 0.25rem 2rem;
+  display: grid;
+  grid-template-columns: 20% 5% 5%;
+  gap: 0.5rem;
+}
+input {
+  /* width: 100%; */
+  /* margin: 0.5rem; */
+}
+.check_box {
+  background-color: #bbb;
+  width: 75%;
+  margin: auto;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.delete_box {
+  background-color: #bbb;
+  width: 75%;
+  margin: auto;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.check_box[aria-selected="true"] {
+  background-color: var(--primary-color);
+}
+.check_box:hover {
+  background-color: var(--primary-color);
+}
+.delete_box:hover {
+  background-color: red;
+}

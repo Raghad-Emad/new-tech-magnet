@@ -1,0 +1,47 @@
+.container {
+  width: 100%;
+  padding: 0;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+  justify-content: center;
+  border-radius: var(--border-radius);
+}
+
+.profilePicture {
+  width: 10rem;
+  max-width: 60%;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.banner {
+  width: 40rem;
+  max-width: 90%;
+  /* height: 10rem; */
+  aspect-ratio: 4/1;
+
+  position: relative;
+}
+
+.editIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: white;
+  font-size: 2.5rem;
+  transition: all 100ms;
+  transform-origin: 150% -50%;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.253);
+  border-radius: var(--border-radius);
+  margin: 0.5rem 0.5rem 0 0;
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.editIcon:hover {
+  scale: 1.2;
+}

@@ -1,0 +1,70 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+.overlay .message_box {
+  overflow-y: scroll;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  text-align: center;
+  width: 50%;
+  max-height: 90%;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  background-color: var(--background-color);
+  padding: 2% 5%;
+  margin: auto;
+
+  transform: translate(-50%, -50%);
+  border-radius: var(--border-radius);
+}
+.overlay .message_box .previewImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  /* border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color); */
+}
+
+.overlay .message_box .image {
+  /* width: 40rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 1;
+  /* border-radius: 0 0 var(--border-radius); */
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  box-shadow: inset var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+  cursor: pointer;
+  transition: all 250ms;
+}
+.overlay .message_box .previewImage .image p {
+  font-size: 2rem;
+  transition: all 250ms;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.25rem;
+  color: white;
+  line-height: 0;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y)
+    var(--box-shadow-blur) var(--box-shadow-spread) var(--box-shadow-color);
+}
+.overlay .message_box .previewImage .image:hover p {
+  transform: scale(2);
+}
