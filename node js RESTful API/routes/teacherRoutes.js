@@ -10,6 +10,17 @@ const { check, validationResult } = require("express-validator");
 const JWT = require("jsonwebtoken");
 const checkAuth = require("../middleware/checkAuth");
 
+// // Welcome route
+// router.get("/", (req, res) => {
+//   res.send("Welcome to the teacher API!");
+// });
+
+// // Protected route using checkAuth middleware
+// router.get('/protected-route', checkAuth, (req, res) => {
+//   res.json({ message: 'This is a protected route' });
+// });
+
+// Get teacher details
 router.route("/").get(checkAuth, async (req, res) => {
   //get these values from check auth (JWT)
   const email = req.user.email;
@@ -25,19 +36,8 @@ router.route("/").get(checkAuth, async (req, res) => {
     status: "success",
     details,
   });
-  // pool.query(query, (results, error) => {
-  //   if (error) {
-  //     res.status(400).json({ status: "failure", reason: error.code });
-  //   } else {
-  //     res.status(200).json({
-  //       status: "success",
-  //       data: results,
-  //     });
-  //   }
-  // }
-
-  // );
 });
+
 
 router.route("/login").post(async (req, res) => {
   data = {
@@ -72,32 +72,6 @@ router.route("/login").post(async (req, res) => {
       return res.status(404).json({ status: "error occured" });
     }
   }
-  // pool.query(query, [req.body.email], async (error, results) => {
-  //   if (error) {
-  //     return res.status(500).json({ status: "failure", reason: error.code });
-  //   }
-  //   if (!results[0]) {
-  //     return res.status(401).json({ status: "Email not found" });
-  //   } else {
-  //     try {
-  //       if (await bcrypt.compare(req.body.password, results[0].Password)) {
-  //         data.password = results[0].Password;
-  //         const token = await JWT.sign({ data }, process.env.SECURE_KEY, {
-  //           expiresIn: parseInt(process.env.EXPIRES_IN),
-  //         });
-  //         return res.status(200).json({
-  //           status: "success",
-  //           message: "Successfull login",
-  //           token: token,
-  //         });
-  //       } else {
-  //         return res.status(401).json({ status: "Password not matching" });
-  //       }
-  //     } catch {
-  //       return res.status(404).json({ status: "error occured" });
-  //     }
-  //   }
-  // });
 });
 
 router
@@ -132,15 +106,7 @@ router
       });
       return res.status(200).json({ status: "success", data: data });
 
-      // pool.query(query, (error) => {
-      //   if (error) {
-      //     return res
-      //       .status(400)
-      //       .json({ status: "failure", reason: error.code });
-      //   } else {
-      //     return res.status(200).json({ status: "success", data: data });
-      //   }
-      // });
+    
     }
   )
 
@@ -159,16 +125,7 @@ router
       status: "success",
       message: `deleted user: ${req.params.id}`,
     });
-    // pool.query(query, (error) => {
-    //   if (error) {
-    //     return res.status(400).json({ status: "failure", reason: error.code });
-    //   } else {
-    //     return res.status(200).json({
-    //       status: "success",
-    //       message: `deleted user: ${req.params.id}`,
-    //     });
-    //   }
-    // });
+   
   });
 
 router
@@ -223,15 +180,7 @@ router
         });
         return res.status(200).json({ status: "success" });
 
-        // pool.query(query, (error) => {
-        //   if (error) {
-        //     return res
-        //       .status(400)
-        //       .json({ status: "failure", reason: error.code });
-        //   } else {
-        //     return res.status(200).json({ status: "success" });
-        //   }
-        // });
+       
       } catch (err) {
         return res.status(500).send(err);
       }
@@ -277,15 +226,7 @@ router
         });
         return res.status(201).json({ status: "success" });
 
-        // pool.query(query, (error) => {
-        //   if (error) {
-        //     return res
-        //       .status(400)
-        //       .json({ status: "failure", reason: error.code });
-        //   } else {
-        //     return res.status(201).json({ status: "success" });
-        //   }
-        // });
+      
       } catch (err) {
         return res.status(500).send(err);
       }
@@ -313,17 +254,7 @@ router.route("/classes/assign").post(checkAuth, async (req, res) => {
       data: data,
       message: "student added to class",
     });
-    // pool.query(query, (error, results) => {
-    //   if (error) {
-    //     return res.status(400).json({ status: "failure", reason: error.code });
-    //   } else {
-    //     return res.status(201).json({
-    //       status: "success",
-    //       data: data,
-    //       message: "student added to class",
-    //     });
-    //   }
-    // });
+    
   } catch (err) {
     return res.status(500).send(err);
   }
@@ -350,17 +281,7 @@ router.route("/classes/remove").delete(checkAuth, async (req, res) => {
       data: data,
       message: "student added to class",
     });
-    // pool.query(query, (error, results) => {
-    //   if (error) {
-    //     return res.status(400).json({ status: "failure", reason: error.code });
-    //   } else {
-    //     return res.status(201).json({
-    //       status: "success",
-    //       data: data,
-    //       message: "student added to class",
-    //     });
-    //   }
-    // });
+  
   } catch (err) {
     return res.status(500).send(err);
   }
@@ -440,14 +361,7 @@ router
         console.log(results[0]);
         return res.status(200).json({ status: "success", data: results[0] });
       }
-      // pool.query(query, (error, results) => {
-      //   if (results === null) {
-      //     return res.status(204).json({ status: "Not found" });
-      //   } else {
-      //     console.log(results[0]);
-      //     return res.status(200).json({ status: "success", data: results[0] });
-      //   }
-      // });
+    
     }
   );
 

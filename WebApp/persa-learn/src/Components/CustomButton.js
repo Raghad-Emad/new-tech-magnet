@@ -37,7 +37,7 @@ const CustomButton = ({
         aria-disabled={disabled}
         className={styles.icon}
         style={fill ? { width: "100%", minWidth: 0, maxWidth: "12rem" } : {}}
-        onClick={() => (!disabled ? onClick() : {})}
+        onClick={(e) => !disabled && onClick(e)} 
       >
         {text}
       </button>
@@ -49,7 +49,7 @@ const CustomButton = ({
       aria-disabled={disabled}
       className={type == 1 ? styles.primary : styles.secondary}
       style={fill ? { width: "100%", minWidth: 0, maxWidth: "12rem" } : {}}
-      onClick={() => (!disabled ? onClick() : {})}
+      onClick={(e) => !disabled && onClick(e)} 
     >
       {text}
     </button>

@@ -24,26 +24,46 @@ export const loginUser = async (credentials, isTeacher, isAdmin) => {
     console.log(hostAddress());
     url = `${hostAddress()}/student/login`;
   }
-  return fetch(url, {
+  const response = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(credentials),
-  }).then((data) => data.json());
+  })
+  // .then((data) => data.json());
+
+
+const data = await response.json();
+console.log("Login response data:", data); 
+
+  if (response.ok) {
+    const token = data.token;
+    sessionStorage.setItem("token", JSON.stringify(token));
+    console.log("Token stored:", token);
+  } else {
+    throw new Error(data.message);
+  }
+
+  return data;
 };
 
+
 export const signUpUser = (credentials, isTeacher) => {
+  const token = JSON.parse(sessionStorage.getItem("token"));
+  console.log("Token retrieved:", token); // Log the retrieved token
   let url;
   if (isTeacher) {
     url = `${hostAddress()}/teacher/create`;
   } else {
     url = `${hostAddress()}/student/create`;
+    
   }
   return fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Autherization": `Bearer ${token}`,
     },
     body: JSON.stringify(credentials),
   }).then((data) => data.json());
