@@ -32,6 +32,7 @@ const LoginBox = ({ setToken, isTeacher, isAdmin, signUp }) => {
       } else {
         setEmailError(null);
       }
+
       if (password == null || password == "") {
         setPasswordError("Please enter a password");
       } else if (password.length < 8) {
@@ -39,57 +40,92 @@ const LoginBox = ({ setToken, isTeacher, isAdmin, signUp }) => {
       } else {
         setPasswordError(null);
       }
-      // if (email != null && password != null && email != "" && password != "") {
-      if (
-        password != null &&
-        password != "" &&
-        email != null &&
-        email != "" &&
-        EMAIL_REGEX.test(email) &&
-        password.length >= 8
-      ) {
-        const data = await loginUser(
-          {
-            email,
-            password,
-          },
-          isTeacher,
-          isAdmin
-        );
-        console.log("data: ", data);
 
-        if (data !== null && data !== undefined) {
-          const token = data.token;
-          console.log(token);
-          if (!token) {
-            setIsError(true);
-            if (data.reason === "ENOTFOUND" || data.reason === "ECONNREFUSED") {
-              setReason("could not connect to db");
-              return;
-            }
-            setReason("Email or Password incorrect");
-            return;
-          }
-          if (isAdmin) {
-            sessionStorage.setItem("admin", true);
-            sessionStorage.setItem("teacher", false);
-          } else if (isTeacher) {
-            sessionStorage.setItem("teacher", true);
-            sessionStorage.setItem("admin", false);
-          } else {
-            sessionStorage.setItem("teacher", false);
-            sessionStorage.setItem("admin", false);
-          }
-          setIsError(false);
-          navigate("/");
-          setToken(token);
+    //   // if (email != null && password != null && email != "" && password != "") {
+    //   if (
+    //     password != null &&
+    //     password != "" &&
+    //     email != null &&
+    //     email != "" &&
+    //     EMAIL_REGEX.test(email) &&
+    //     password.length >= 8
+    //   ) {
+    //     const data = await loginUser(
+    //       {
+    //         email,
+    //         password,
+    //       },
+    //       isTeacher,
+    //       isAdmin
+    //     );
+    //     console.log("data: ", data);
+
+    //     if (data !== null && data !== undefined) {
+    //       const token = data.token;
+    //       console.log(token);
+    //       if (!token) {
+    //         setIsError(true);
+    //         if (data.reason === "ENOTFOUND" || data.reason === "ECONNREFUSED") {
+    //           setReason("could not connect to db");
+    //           return;
+    //         }
+    //         setReason("Email or Password incorrect");
+    //         return;
+    //       }
+    //       if (isAdmin) {
+    //         sessionStorage.setItem("admin", true);
+    //         sessionStorage.setItem("teacher", false);
+    //       } else if (isTeacher) {
+    //         sessionStorage.setItem("teacher", true);
+    //         sessionStorage.setItem("admin", false);
+    //       } else {
+    //         sessionStorage.setItem("teacher", false);
+    //         sessionStorage.setItem("admin", false);
+    //       }
+    //       setIsError(false);
+    //       navigate("/");
+    //       setToken(token);
+    //     } else {
+    //       console.log("No data returned");
+    //     }
+    //   }
+    // } catch (e) {
+    //   console.log("error occured: ", e);
+    // }
+    // Proceed if both email and password are valid
+    if (email && EMAIL_REGEX.test(email) && password && password.length >= 8) {
+      const data = await loginUser({ email, password }, isTeacher, isAdmin);
+      console.log("Login response data:", data);
+
+      if (data && data.token) {
+        const token = data.token;
+        sessionStorage.setItem("token", token);
+        console.log("Token stored:", token);
+
+        if (isAdmin) {
+          sessionStorage.setItem("admin", true);
+          sessionStorage.setItem("teacher", false);
+        } else if (isTeacher) {
+          sessionStorage.setItem("teacher", true);
+          sessionStorage.setItem("admin", false);
         } else {
-          console.log("No data returned");
+          sessionStorage.setItem("teacher", false);
+          sessionStorage.setItem("admin", false);
         }
+
+        setIsError(false);
+        navigate("/");
+        setToken(token);
+      } else {
+        setIsError(true);
+        setReason(data.message || "Email or Password incorrect");
       }
-    } catch (e) {
-      console.log("error occured: ", e);
     }
+  } catch (error) {
+    console.error("Error occurred:", error);
+    setIsError(true);
+    setReason("An unexpected error occurred. Please try again later.");
+  }
   };
 
   return (

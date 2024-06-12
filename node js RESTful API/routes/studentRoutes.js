@@ -12,53 +12,101 @@ const checkAuth = require("../middleware/checkAuth");
 const { check, validationResult } = require("express-validator");
 const { requiredXp } = require("../LevelSystem/Level");
 
-router.route("/login").post(async (req, res) => {
-  data = {
-    email: req.body.email,
-    password: req.body.password,
-  };
-  // get all students from database with corresponding email
-  const query = `SELECT * FROM students WHERE email = "${data.email}"`;
-  const [results] = await pool.query(query).catch((err) => {
-    // throw err;
-    console.log("something went wrong");
-    return res.status(400).json({ status: "failure", reason: err });
-  });
-  console.log(results);
-  // if (error) {
-  //   return res.status(500).json({ status: "failure", reason: error.code });
+// router.route("/login").post(async (req, res) => {
+  // data = {
+  //   email: req.body.email,
+  //   password: req.body.password,
+  // };
+  // // get all students from database with corresponding email
+  // const query = `SELECT * FROM students WHERE email = "${data.email}"`;
+  // const [results] = await pool.query(query).catch((err) => {
+  //   // throw err;
+  //   console.log("something went wrong");
+  //   return res.status(400).json({ status: "failure", reason: err });
+  // });
+  // console.log(results);
+  // // if (error) {
+  // //   return res.status(500).json({ status: "failure", reason: error.code });
+  // // }
+  // if (!results[0]) {
+  //   // no students with that email
+  //   return res.status(401).json({ status: "Email or Password incorrect" });
+  // } else {
+  //   try {
+  //     console.log("result found");
+  //     // compare input password with password on database
+  //     if (await bcrypt.compare(req.body.password, results[0].Password)) {
+  //       console.log("doing bcrypt");
+  //       data.password = results[0].Password;
+  //       console.log("getting password");
+  //       console.log(data);
+  //       console.log("secure key: ", process.env.SECURE_KEY);
+  //       // create jwt of email and password with a predefined expiry time
+  //       const token = await JWT.sign({ data }, process.env.SECURE_KEY, {
+  //         // expiresIn: parseInt(process.env.EXPIRES_IN),
+  //       });
+  //       console.log("this is token:", token);
+  //       return res.status(200).json({
+  //         status: "success",
+  //         message: "Successfull login",
+  //         token: token,
+  //         // refreshToken: refreshToken,
+  //       });
+  //     } else {
+  //       return res.status(401).json({ status: "Email or Password incorrect" });
+  //     }
+  //   } catch {
+  //     return res.status(404).json({ status: "error occured" });
+  //   }
   // }
-  if (!results[0]) {
-    // no students with that email
-    return res.status(401).json({ status: "Email or Password incorrect" });
-  } else {
+  router.post('/login', async (req, res) => {
+    
     try {
-      console.log("result found");
-      // compare input password with password on database
-      if (await bcrypt.compare(req.body.password, results[0].Password)) {
-        console.log("doing bcrypt");
-        data.password = results[0].Password;
-        console.log("getting password");
-        console.log(data);
-        console.log("secure key: ", process.env.SECURE_KEY);
-        // create jwt of email and password with a predefined expiry time
-        const token = await JWT.sign({ data }, process.env.SECURE_KEY, {
-          // expiresIn: parseInt(process.env.EXPIRES_IN),
-        });
-        console.log("this is token:", token);
-        return res.status(200).json({
-          status: "success",
-          message: "Successfull login",
-          token: token,
-          // refreshToken: refreshToken,
-        });
-      } else {
-        return res.status(401).json({ status: "Email or Password incorrect" });
+      const { email, password } = req.body;
+      console.log("Login attempt with email:", email);
+    console.log("SECURE_KEY:", process.env.SECURE_KEY); // Log the SECURE_KEY
+      // // Get all students from the database with the corresponding email
+      // const [results] = await pool.query('SELECT * FROM students WHERE email = ?', [email]);
+
+          // Query to find the student with the provided email
+    const query = `SELECT * FROM students WHERE email = ?`;
+    const results = await pool.query(query, email);
+
+
+  
+      // If no students found with that email
+      if (results.length === 0) {
+        return res.status(401).json({ status: 'failure', message: 'Email or Password incorrect' });
       }
-    } catch {
-      return res.status(404).json({ status: "error occured" });
+  
+      const user = results[0];
+      console.log("User found:", user);
+  
+      // Compare input password with password in the database
+      const isMatch = await bcrypt.compare(password, user.Password);
+      if (!isMatch) {
+        console.log("Password mismatch for user:", email);
+        return res.status(401).json({ status: 'failure', message: 'Email or Password incorrect' });
+      }
+  
+      console.log("Password matched for user:", email);
+
+      // Create JWT of email and password with a predefined expiry time
+      const token = JWT.sign({ data: { email: user.Email, id: user.StudentID } }, process.env.SECURE_KEY, {
+      expiresIn: parseInt(process.env.EXPIRES_IN),
+    });
+
+    console.log("Generated token for user:", token);
+  
+      return res.status(200).json({
+        status: 'success',
+        message: 'Successful login',
+        token: token,
+      });
+    } catch (err) {
+      console.error('Login error:', err);
+      return res.status(500).json({ status: 'error', message: 'Internal Server Error' });
     }
-  }
 
 });
 
@@ -191,17 +239,15 @@ router
 router
   .route("/create")
   .post(
-    checkAuth,
     [
       check("email", "Invalid email").isEmail(),
       check("password", "Password < 6").isLength({ min: 6 }),
       check("firstname", "First name is required").not().isEmpty(),
       check("lastname", "Last name is required").not().isEmpty(),
     ],
-    
-    async ( req, res) => {
+    async (req, res) => {
       try {
-        //validate inputs
+        // Validate inputs
         const errs = validationResult(req);
         if (!errs.isEmpty()) {
           console.log(errs);
@@ -209,6 +255,7 @@ router
             errors: errs.array(),
           });
         }
+
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const data = {
           email: req.body.email,
@@ -216,17 +263,20 @@ router
           lName: req.body.lastname,
           password: hashedPassword,
         };
-        email = data.email;
         const query = `CALL create_student ("${data.fName}", "${data.lName}", "${data.email}", "${data.password}")`;
         console.log(query);
-        const result = await pool.query(query).catch((err) => {
-          // throw err;
-          return res.status(400).json({ status: "failure", reason: err });
-        });
-        return res.status(201).json({ status: "success" });
 
+        // Execute the query and handle potential errors
+        try {
+          await pool.query(query);
+          return res.status(201).json({ status: "success" });
+        } catch (queryError) {
+          console.error(queryError); // Log the error for debugging
+          return res.status(400).json({ status: "failure", reason: queryError });
+        }
         
       } catch (err) {
+        console.error(err); // Log the error for debugging
         return res.status(500).send(err);
       }
     }
@@ -272,10 +322,10 @@ router
 router.route("/details").get(checkAuth, async (req, res) => {
   try {
     const email = req.user.email;
-    const password = req.user.password;
-
+  
     const query = `CALL get_student_details ("${email}", "${password}")`;
     console.log(query);
+
     const [[[results]]] = await pool.query(query).catch((err) => {
       // throw err;
       return res.status(400).json({ status: "failure", reason: err });
